@@ -7,11 +7,27 @@ function DocumentHeader(data) {
     this.isPdf = data.documentType == 'pdf';
     this.isExcel = data.documentType == 'xls';
 }
+
+function Document(data) {
+	this.id = ko.observable(data.id);
+	this.title = ko.observable(data.title);
+	this.notes = ko.observable(data.notes);
+	this.modifiedDate = ko.observable(data.modifiedDate);
+	this.fileToken = ko.observable(data.fileToken);
+	this.tags = ko.observableArray(data.tags);
+}
+
+function Tag(data) {
+	this.id = ko.observable(data.id);
+    this.name = ko.observable(data.name);
+}
+
 function DocumentsViewModel() {
     // Data
     var self = this;
     self.documents = ko.observableArray([]);
     self.searchString = ko.observable();
+    self.currentDocument = ko.observable();
     /*self.incompleteTasks = ko.computed(function() {
         return ko.utils.arrayFilter(self.tasks(), function(task) { return !task.isDone(); });
     });
@@ -24,17 +40,23 @@ function DocumentsViewModel() {
     self.removeTask = function(task) { self.tasks.destroy(task); };
 */
     self.searchDocuments = function() {
-    	//$.getJSON("/knockout/document", self.searchString,, function(allData) {
-        //var mappedDocuments = $.map(allData, function(item) { return new DocumentHeader(item); });
-        //self.documents(mappedDocuments);
-    	//});   
+    	$.getJSON("/doxtore/rest/documents", {searchString : self.searchString()}, function(allData) {
+        var mappedDocuments = $.map(allData, function(item) { return new DocumentHeader(item); });
+        self.documents(mappedDocuments);
+    	});   
     };
-    
+    /*
     // Load initial state from server, convert it to Task instances, then populate self.tasks
     $.getJSON("/doxtore/rest/documents", function(allData) {
         var mappedDocuments = $.map(allData, function(item) { return new DocumentHeader(item); });
         self.documents(mappedDocuments);
-    });   
+    });  
+    */
+    self.openDocument = function(document) {
+        $.getJSON("/doxtore/rest/documents/" + document.id(), function(data) {
+        	self.currentDocument(new Document(data));
+        });  
+    };
     /*
     self.save = function() {
         $.ajax("/knockout/json", {

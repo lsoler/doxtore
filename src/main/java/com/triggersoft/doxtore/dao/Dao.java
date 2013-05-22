@@ -1,5 +1,7 @@
 package com.triggersoft.doxtore.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -28,5 +30,4 @@ public class Dao<T> {
 	public void delete(T entity) {
 		em.remove(entity);
 	}
-
 }
