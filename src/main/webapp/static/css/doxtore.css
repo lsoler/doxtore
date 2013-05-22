@@ -1,0 +1,42 @@
+
+.documentList {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.documentList li { background: #f1f1f1; }
+.documentList li:nth-child(odd) { background: white; }
+
+.searchBox {
+
+}
+
+.documentsListContainer {
+	border: solid 1px #f1f1f1;
+    position: absolute;
+    left: 50%;
+    background-color: white;
+    width: 600px;
+    margin-left: -300px;
+}
+
+.docIconWord {
+	background-image:url('../images/page_word.png');
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+}
+
+.docIconPdf {
+	background-image:url('../images/pdf_document.png');
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+}
+
+.docIconExcel {
+	background-image:url('../images/page_excel.png');
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+}

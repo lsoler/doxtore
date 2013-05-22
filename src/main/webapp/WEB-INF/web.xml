@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web_1:web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_4.xsd" xmlns:web_1="http://java.sun.com/xml/ns/javaee/web-app_2_4.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" id="doxtore" version="2.4">
+  <javaee:display-name>Restful Web Application</javaee:display-name>
+  <web_1:context-param>
+    <javaee:param-name>resteasy.scan</javaee:param-name>
+    <javaee:param-value>true</javaee:param-value>
+  </web_1:context-param>
+  <web_1:context-param>
+    <javaee:param-name>resteasy.servlet.mapping.prefix</javaee:param-name>
+    <javaee:param-value>/rest</javaee:param-value>
+  </web_1:context-param>
+  <web_1:listener>
+    <javaee:listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</javaee:listener-class>
+  </web_1:listener>
+  <web_1:servlet>
+    <web_1:servlet-name>resteasy-servlet</web_1:servlet-name>
+    <web_1:servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</web_1:servlet-class>
+  </web_1:servlet>
+  <web_1:servlet-mapping>
+    <web_1:servlet-name>resteasy-servlet</web_1:servlet-name>
+    <web_1:url-pattern>/rest/*</web_1:url-pattern>
+  </web_1:servlet-mapping>
+</web_1:web-app>
