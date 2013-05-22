@@ -26,7 +26,7 @@ public class Tag {
 		this.id = id;
 	}
 	
-	@Column(name = "description", nullable = false, length = 150)
+	@Column(name = "name", nullable = false, length = 150)
 	public String getName() {
 		return name;
 	}

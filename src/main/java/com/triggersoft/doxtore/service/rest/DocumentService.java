@@ -3,6 +3,8 @@ package com.triggersoft.doxtore.service.rest;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -45,6 +47,7 @@ public class DocumentService {
 
 	@GET
 	@Path("/{id}")
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Response getDocumentById(@PathParam("id") long id) {
 		Document document = documentDao.find(id);
 		if (document == null) {

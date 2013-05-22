@@ -1,6 +1,7 @@
 package com.triggersoft.doxtore.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class DocumentDTO {
 
@@ -9,6 +10,7 @@ public class DocumentDTO {
 	private String notes;
 	private Date modifiedDate;
 	private String fileToken;
+	private List<TagDTO> tags;
 	
 	public long getId() {
 		return id;
@@ -48,5 +50,13 @@ public class DocumentDTO {
 	
 	public void setFileToken(String fileToken) {
 		this.fileToken = fileToken;
+	}
+
+	public List<TagDTO> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<TagDTO> tags) {
+		this.tags = tags;
 	}
 }

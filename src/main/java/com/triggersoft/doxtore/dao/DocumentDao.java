@@ -12,6 +12,7 @@ public class DocumentDao extends Dao<Document> {
 	}
 	
 	public List<Document> findDocumentsBy(String searchString, int page){
+		//TODO: actually search the searchString
 		return em.createQuery("from Document d")
 		.setFirstResult(page * PAGE_SIZE)
 		.setMaxResults(PAGE_SIZE)

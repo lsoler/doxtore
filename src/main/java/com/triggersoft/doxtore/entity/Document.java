@@ -3,7 +3,6 @@ package com.triggersoft.doxtore.entity;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -69,8 +68,7 @@ public class Document {
 	}
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="document_tag", joinColumns={
-    								@JoinColumn(name="document_id")}, 
+    @JoinTable(name="document_tag", joinColumns={@JoinColumn(name="document_id")}, 
     								inverseJoinColumns={@JoinColumn(name="tag_id")})
 	public Set<Tag> getTags() {
 		return tags;

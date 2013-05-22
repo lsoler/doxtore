@@ -2,14 +2,15 @@ package com.triggersoft.doxtore.translator;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public abstract class Translator<E,D> {
 
 	public abstract D toDTO(E entity);
 	public abstract E toEntity(D dto);
 	
-	public Collection<D> toDTO(Collection<E> entities){
-		Collection<D> result = new ArrayList<D>();
+	public List<D> toDTO(Collection<E> entities){
+		List<D> result = new ArrayList<D>();
 		
 		for(E entity : entities) {
 			result.add(toDTO(entity));
